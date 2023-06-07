@@ -1,0 +1,14 @@
+/node_modules
+/public/storage
+/public/assets/images
+/resources/template
+/storage
+.idea
+/vendor
+/public/admin/dist/img
+.env
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
+_ide_helper.php
+.vscode
