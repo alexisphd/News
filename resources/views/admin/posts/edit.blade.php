@@ -104,10 +104,35 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            <div class="form-group container-fluid">
-                                <input type="submit" class=" btn btn-primary mt-2" value="Обновить">
-                            </div>
+                                <div class="form-group">
+                                    <label>Комментарии</label>
+                                    @if(!$post->comments->count())
+                                        <p>Отсутствуют</p>
+                                    @endif
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        @foreach($post->comments as $comment)
+                                            <tr>
+                                                <td class="text-wrap">
+                                                    {{$comment->text}} </td>
+                                                <td>
+                                                    <form action="{{route('admin.comment.delete', $comment->id)}}"
+                                                          method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="border-0 bg-transparent">
+                                                            <i class="fa fa-trash text-danger" role="button"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="form-group container-fluid">
+                                    <input type="submit" class=" btn btn-primary mt-2" value="Обновить">
+                                </div>
                         </form>
                     </div>
                 </div>

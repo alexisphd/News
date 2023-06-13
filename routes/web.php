@@ -71,6 +71,10 @@ Route::namespace('App\Http\Controllers\Admin')->middleware(['auth', 'admin'])->p
         Route::get('/{post}/edit', 'EditController')->name('admin.posts.edit');
         Route::patch('/{post}', 'UpdateController')->name('admin.posts.update');
         Route::delete('/{post}', 'DestroyController')->name('admin.posts.delete');
+
+        Route::prefix('{post}/comment')->group(function () {
+            Route::delete('/delete', 'CommentDestroyController')->name('admin.comment.delete');
+        });
     });
 
     // Users

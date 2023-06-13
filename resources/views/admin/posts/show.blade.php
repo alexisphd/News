@@ -24,9 +24,9 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-9">
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
+                            <table class="table table-hover">
                                 <tbody>
                                 <tr>
                                     <td>ID</td>
@@ -45,9 +45,11 @@
                                     @if(!$post->comments->count())
                                         <td>Отсутствуют</td>
                                     @endif
-                                    @foreach($post->comments as $comment)
-                                        <td class="text-wrap">{{$comment->text}}</td>
-                                    @endforeach
+                                    <td class="text-wrap" style="col-span: {{$post->comments->count()}}">
+                                        @foreach($post->comments as $comment)
+                                            <span> {{$comment->id}}: {{$comment->text}} </span> <br>
+                                        @endforeach
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
